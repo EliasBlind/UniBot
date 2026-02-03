@@ -1,0 +1,12 @@
+[app]
+env = "local"
+schedule_update = 20
+root = "~/code/prod/UniBot"
+
+[storage]
+path = "./storage"
+name = "UniSchData.db"
+
+[logger]
+path = ".src/logger"
+name = "uni.log"
