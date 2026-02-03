@@ -17,7 +17,7 @@ class Schedule:
     def __init__(self, cfg: config.Config):
         self.cfg = cfg
         self.data = ScheduleDb(cfg)
-        self.need_update = datetime.now() + timedelta(minutes=1)
+        self.need_update = datetime.now() + timedelta(minutes=self.cfg.schedule_update)
         log.info("Schedule class initialized")
 
     def get(self):

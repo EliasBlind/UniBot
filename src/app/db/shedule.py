@@ -20,6 +20,17 @@ class ScheduleDb:
         log.info("data base init")
 
     def update_schedule(self, lessons: list[Lesson]):
+        conn = None
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM schedule")
+            conn.commit()
+        except Exception as e:
+            log.error(f"Error removed lessons all: {e}")
+        finally:
+            if conn:
+                conn.close()
         for lesson in lessons:
             subgroup = False if lesson.subgroup is None else True
             self.add_lesson_in_schedule(
